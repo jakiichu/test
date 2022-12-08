@@ -9,13 +9,16 @@ import UserItem from './app/components/userItem';
 import { IGetAllTodoDto } from './domain/dto/todo';
 import Todo from './app/components/todo';
 import Events from './app/components/events';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate, Link } from 'react-router-dom';
 import { Grid } from '@mui/material';
+import Navbar from "./app/components/navbar";
 
 
 
 
 const App = () => {
+  
+
   const [users, setUsers] = useState<IGetAllAddressDto[]>([])
   const [todo, setTodo] = useState<IGetAllTodoDto[]>([])
 
@@ -28,12 +31,14 @@ const App = () => {
 
   return (
     <Grid container direction="row"
-    justifyContent="center"
-    alignItems="center">
+      justifyContent="center"
+      alignItems="center">
 
-      
       <BrowserRouter>
+          <Navbar/>
+
         <Routes>
+
           <Route path='/' element={<List
             items={users}
             renderItem={
